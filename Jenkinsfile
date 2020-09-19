@@ -3,7 +3,6 @@ pipeline {
         docker {
             image 'maven:3-alpine' 
             args '-v /root/.m2:/root/.m2' 
-            args '-v /var/jenkins_home/sonar-scanner/sonar-scanner-3.3.0.1492-linux:/bin/sonar-scanner'
         }
     }
     
