@@ -1,23 +1,23 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2' 
-        }
+    agent any
+    tools { 
+        maven 'Maven 3.3.9' 
+        jdk 'jdk8' 
     }
-    
     stages {
-        stage('Build') { 
+        stage ('Initialize') {
             steps {
-                withSonarQubeEnv('sonarqube server')
-                  sh 'mvn clean package sonar:sonar' 
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
             }
         }
-    }
-    post {
-        always {
-            sh 'echo "clean workspace"'
-            cleanWs()
+
+        stage ('Build') {
+            steps {
+                echo 'This is a minimal pipeline.'
+            }
         }
     }
 }
