@@ -15,15 +15,10 @@ pipeline {
         stage('build && SonarQube analysis') {
             steps {
                 withSonarQubeEnv('sonarqube server') {
-                    // Optionally use a Maven environment you've configured already
+                    // -X for running in debug mode
                         sh 'mvn clean install -X sonar:sonar'
                     }
             }
         }  
-        stage ('Build') {
-            steps {
-                echo 'This is a minimal pipeline.'
-            }
-        }
     }
 }
