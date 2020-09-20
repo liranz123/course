@@ -25,7 +25,7 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             } 
         }
-        stage('Docker Build') {
+        stage('Docker Image Build') {
             steps {
                sh 'docker build -t automatit/app:latest .'
             }
