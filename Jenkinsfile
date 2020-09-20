@@ -19,6 +19,11 @@ pipeline {
                         sh 'mvn clean install -X sonar:sonar'
                     }
             }
+        }
+        stage('Docker Build') {
+            steps {
+               sh 'docker build -t shanem/spring-petclinic:latest .'
+            }
         }  
     }
 }
