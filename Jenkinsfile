@@ -30,13 +30,13 @@ pipeline {
                sh 'docker build -t automatit/app:latest .'
             }
         }
-        stage('push to nexus'){
-            steps{
-                docker.withRegistry('nexus', 'nexus') {
-                          customImage.push()
-                }
-            }  
-        }
+        // stage('push to nexus'){
+        //     steps{
+        //         docker.withRegistry('http://', 'nexus') {
+        //                   customImage.push()
+        //         }
+        //     }  
+        // }
     }    
 }
 
