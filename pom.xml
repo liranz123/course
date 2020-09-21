@@ -55,18 +55,38 @@
                 <plugin>
                     <groupId>com.spotify</groupId>
                     <artifactId>dockerfile-maven-plugin</artifactId>
-                    <version>1.4.3</version>
+                    <version>1.4.10</version>
                     <executions>
-                        <execution>
-                            <id>default</id>
-                            <goals>
-                                <goal>build</goal>
-                            </goals>
-                        </execution>
+                         <execution>
+                              <id>tag-latest</id>
+                              <goals>
+                                  <goal>build</goal>
+                                  <goal>tag</goal>
+                                  <goal>push</goal>
+                              </goals>
+                              <configuration>
+                                  <tag>latest</tag>
+                              </configuration>
+                         </execution>
+                         <execution>
+                              <id>tag-version</id>
+                              <goals>
+                                  <goal>build</goal>
+                                  <goal>tag</goal>
+                                  <goal>push</goal>
+                              </goals>
+                              <configuration>
+                                  <tag>${project.version}</tag>
+                              </configuration>
+                         </execution>
                     </executions>
                     <configuration>
-                    <repository>docker.io/kkapelon/docker-maven-comparison</repository>
+                        <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
+                        <repository>10.244.1.75/jenkins/${project.artifactId}</repository>
                         <tag>${project.version}</tag>
+                        <buildArgs>
+                            <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                        </buildArgs>
                     </configuration>
                 </plugin>
             </plugins>
