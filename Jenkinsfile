@@ -29,6 +29,18 @@ pipeline {
             steps {
                sh 'docker build -t automatit/app:latest .'
             }
-        }  
-    }
+        }
+        stage('push to nexus'){
+            steps{
+                docker.withRegistry('http://10.244.1.75:8081', 'nexus') {
+                          customImage.push()
+                }
+            }  
+        }
+    }    
 }
+
+
+
+
+
