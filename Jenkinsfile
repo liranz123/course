@@ -12,13 +12,13 @@ pipeline {
                 ''' 
             }
         }
-        stage('build && SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('sonarqube server') {
-                    // -X for running in debug mode
-                        sh 'mvn clean install -X sonar:sonar'
-                    }
-            }
+        // stage('build && SonarQube analysis') {
+        //     steps {
+        //         withSonarQubeEnv('sonarqube server') {
+        //             // -X for running in debug mode
+        //                 sh 'mvn clean install -X sonar:sonar'
+        //             }
+        //     }
         }
         stage('Build'){
             steps{
