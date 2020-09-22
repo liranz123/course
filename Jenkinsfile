@@ -19,7 +19,7 @@ pipeline {
         //                 sh 'mvn clean install -X sonar:sonar'
         //             }
         //     }
-        }
+        //}
         stage('Build'){
             steps{
                 sh 'mvn -B -DskipTests clean package'
