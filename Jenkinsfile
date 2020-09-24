@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        registry = "coffeeshop12/test"
-        registryCredential = 'dockerhub'
+        registry = "10.108.48.161:5003/docker"
+        registryCredential = 'nexus'
         dockerImage = ''
     }
     tools { 
