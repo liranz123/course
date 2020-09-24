@@ -32,9 +32,16 @@ pipeline {
             } 
         }
 
-        stage('Docker Image Build') {
-            steps {
-               sh 'docker build -t automatit/app:latest .'
+        // stage('Docker Image Build') {
+        //     steps {
+        //        sh 'docker build -t automatit/app:latest .'
+        //     }
+        // }
+        stage('Building image') {
+            steps{
+              script {
+                docker.build registry + ":$BUILD_NUMBER"
+              }
             }
         }
         // stage('push to nexus'){
