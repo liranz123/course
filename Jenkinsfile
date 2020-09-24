@@ -1,5 +1,10 @@
 pipeline {
     agent any
+
+    environment {
+        registry = "coffeeshop12/test"
+        registryCredential = 'dockerhub'
+    }
     tools { 
         maven 'maven'
     }
@@ -41,6 +46,16 @@ pipeline {
             steps{
               script {
                 docker.build registry + ":$BUILD_NUMBER"
+              }
+            }
+        }
+
+        stage('Deploy Image') {
+            steps{
+              script {
+                docker.withRegistry( '', registryCredential ) {
+                dockerImage.push()
+                }
               }
             }
         }
