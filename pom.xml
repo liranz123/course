@@ -144,10 +144,10 @@
                             <arguments>
                             <argument>login</argument>
                             <argument>-u</argument>
-                            <argument>${docker.user}</argument>
+                            <argument>admin</argument>
                             <argument>-p</argument>
-                            <argument>${docker.password}</argument>
-                            <argument>${docker.url}</argument>
+                            <argument>1</argument>
+                            <argument>10.108.48.161:5003</argument>
                             </arguments>
                         </configuration>
                         </execution>
