@@ -4,6 +4,7 @@ pipeline {
     environment {
         registry = "coffeeshop12/test"
         registryCredential = 'dockerhub'
+        dockerImage = ''
     }
     tools { 
         maven 'maven'
